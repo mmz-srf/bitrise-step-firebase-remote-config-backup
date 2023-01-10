@@ -151,6 +151,9 @@ echo_info "Commit and push remote-config backup to \"firebase_remote_config_back
 
 checkout_cmd="git checkout -B firebase_remote_config_backup"
 
+echo_details "$checkout_cmd"
+echo
+
 eval "${checkout_cmd}"
 
 if [ $? -ne 0 ] ; then
@@ -159,7 +162,10 @@ fi
 
 commit_cmd="git add \"${remote_config_file}\""
 commit_cmd="$commit_cmd; git diff-index --quiet HEAD || git commit -m \"Firebase remote-config backup\""
-commit_cmd="$commit_cmd; git push -u origin head"
+commit_cmd="$commit_cmd; git push -u origin HEAD"
+
+echo_details "$commit_cmd"
+echo
 
 eval "${commit_cmd}"
 
