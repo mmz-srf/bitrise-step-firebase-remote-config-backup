@@ -89,7 +89,6 @@ function validate_required_input_with_options {
 echo_info "Configs:"
 echo_details "* service_credentials_file: $service_credentials_file"
 echo_details "* project_id: $project_id"
-echo_details "* upgrade_firebase_tools: $upgrade_firebase_tools"
 
 echo
 
