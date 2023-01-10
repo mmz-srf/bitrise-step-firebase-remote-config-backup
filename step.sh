@@ -148,6 +148,7 @@ echo_info "Backup Firebase remote-config to repository"
 
 commit_cmd="git add \"${remote_config_file}\""
 commit_cmd="$commit_cmd; git commit -m \"Firebase remote-config backup\""
+commit_cmd="$commit_cmd; git push"
 
 eval "${commit_cmd}"
 
