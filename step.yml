@@ -78,3 +78,12 @@ inputs:
       description: |
         You can find the Project ID in the Firebase console, on the [General Settings page](https://console.firebase.google.com/project/_/settings/general/).
       is_required: true
+  - upgrade_firebase_tools: "false"
+    opts:
+      title: "Enable Firebase Tools Upgrade"
+      summary: Firebase tools will be upgraded if enabled.
+      description: Firebase tools will be upgraded if enabled.
+      is_required: true
+      value_options:
+        - "false"
+        - "true"
