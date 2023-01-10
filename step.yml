@@ -12,7 +12,7 @@ title: |-
 summary: |
   Export current firebase-config as JSON and add it to the repository.
 description: |
-  TODO
+  Export current firebase-config as JSON and add it to the repository.
 website: https://github.com/mmz-srf/bitrise-step-firebase-remote-config-backup
 source_code_url: https://github.com/mmz-srf/bitrise-step-firebase-remote-config-backup
 support_url: https://github.com/mmz-srf/bitrise-step-firebase-remote-config-backup/issues
@@ -65,26 +65,17 @@ toolkit:
   bash:
     entry_file: step.sh
 
-
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
-    opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
-      is_expand: true
+  - service_credentials_file:
+      opts:
+        title: Service Credentials File
+        description: |
+          The path or HTTP URL to your [service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account) private key JSON file.
+          Required only if you use service account authentication.
       is_required: true
-      value_options: []
-
-outputs:
-  - EXAMPLE_STEP_OUTPUT:
-    opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+      - project_id:
+        opts:
+          title: Firebase Project ID
+          description: |
+            You can find the Project ID in the Firebase console, on the [General Settings page](https://console.firebase.google.com/project/_/settings/general/).
+          is_required: true

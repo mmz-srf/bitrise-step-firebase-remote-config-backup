@@ -81,23 +81,6 @@ function validate_required_input_with_options {
 }
 
 #=======================================
-# Additional functions
-#=======================================
-
-function truncate_release_notes {
-    notes=$1
-    max_length=$2
-    original_length=${#notes}
-    if (( $original_length > $max_length )); then
-        end_message="..."
-        cut_limit=$(($max_length-${#end_message}))
-        echo "${notes:0:$cut_limit}${end_message}"
-    else
-        echo "${notes}"
-    fi
-}
-
-#=======================================
 # Main
 #=======================================
 
@@ -105,7 +88,7 @@ function truncate_release_notes {
 # Validate parameters
 echo_info "Configs:"
 echo_details "* service_credentials_file: $service_credentials_file"
-echo_details "* app: $project_id"
+echo_details "* project_id: $project_id"
 echo_details "* upgrade_firebase_tools: $upgrade_firebase_tools"
 
 echo
