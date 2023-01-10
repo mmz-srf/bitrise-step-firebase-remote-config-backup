@@ -72,7 +72,7 @@ inputs:
       description: |
         The path or HTTP URL to your [service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account) private key JSON file.
         Required only if you use service account authentication.
-    is_required: true
+      is_required: true
   - project_id:
     opts:
       title: Firebase Project ID
