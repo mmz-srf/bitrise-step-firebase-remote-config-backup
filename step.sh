@@ -1,8 +1,6 @@
 #!/bin/bash
 set -ex
 
-THIS_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 #=======================================
 # Functions
 #=======================================
@@ -89,6 +87,7 @@ function validate_required_input_with_options {
 echo_info "Configs:"
 echo_details "* service_credentials_file: $service_credentials_file"
 echo_details "* project_id: $project_id"
+echo_details "* is_debug: $is_debug"
 echo_details "* upgrade_firebase_tools: $upgrade_firebase_tools"
 
 echo
@@ -125,18 +124,32 @@ fi
 # Deploy
 echo_info "Exporting Firebase remote-config"
 
-submit_cmd="firebase remoteconfig:get"
-submit_cmd="$submit_cmd --project \"${project_id}\" -o \"${project_id}_remote_config.json\""
+remote_config_file="${project_id}_remote_config.json"
 
-## Optional params
-#if [ "${is_debug}" = true ] ; then
-#    submit_cmd="$submit_cmd --debug"
-#fi
+submit_cmd="firebase remoteconfig:get"
+submit_cmd="$submit_cmd --project \"${project_id}\" -o \"${remote_config_file}\""
+
+# Optional params
+if [ "${is_debug}" = true ] ; then
+    submit_cmd="$submit_cmd --debug"
+fi
 
 echo_details "$submit_cmd"
 echo
 
 eval "${submit_cmd}"
+
+if [ $? -ne 0 ] ; then
+    echo_fail "Fail"
+fi
+
+# Commit
+echo_info "Backup Firebase remote-config to repository"
+
+commit_cmd="git add \"${remote_config_file}\""
+commit_cmd="$commit_cmd; git commit -m \"Firebase remote-config backup\""
+
+eval "${commit_cmd}"
 
 if [ $? -eq 0 ] ; then
     echo_done "Success"
