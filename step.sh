@@ -89,6 +89,7 @@ function validate_required_input_with_options {
 echo_info "Configs:"
 echo_details "* service_credentials_file: $service_credentials_file"
 echo_details "* project_id: $project_id"
+echo_details "* upgrade_firebase_tools: $upgrade_firebase_tools"
 
 echo
 
@@ -125,7 +126,7 @@ fi
 echo_info "Exporting Firebase remote-config"
 
 submit_cmd="firebase remoteconfig:get"
-submit_cmd="$submit_cmd --project \"${project_id}\""
+submit_cmd="$submit_cmd --project \"${project_id}\" -o \"${project_id}_remote_config.json\""
 
 ## Optional params
 #if [ "${is_debug}" = true ] ; then
