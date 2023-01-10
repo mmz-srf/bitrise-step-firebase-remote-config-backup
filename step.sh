@@ -149,7 +149,7 @@ echo_info "Backup Firebase remote-config to repository"
 # Commit to repo
 echo_info "Commit and push remote-config backup to \"firebase_remote_config_backup\" branch"
 
-checkout_cmd="git checkout -B firebase_remote_config_backup"
+checkout_cmd="git checkout -B firebase_remote_config_backup; git pull"
 
 echo_details "$checkout_cmd"
 echo
