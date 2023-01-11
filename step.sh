@@ -162,7 +162,7 @@ fi
 
 commit_cmd="git add \"${remote_config_file}\""
 commit_cmd="$commit_cmd; git diff-index --quiet HEAD || git commit -m \"Firebase remote-config backup\""
-commit_cmd="$commit_cmd; git push -u origin HEAD"
+commit_cmd="$commit_cmd; git push -f origin HEAD"
 
 echo_details "$commit_cmd"
 echo
