@@ -1,7 +1,6 @@
 # Firebase Remote-Config Backup
 
 Export current firebase-config as JSON and add it to the repository.
-The config is committed to a separate backup branch called `firebase_remote_config_backup`.
 
 ## How to use this Step
 
