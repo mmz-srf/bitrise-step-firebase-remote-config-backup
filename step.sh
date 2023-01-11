@@ -145,10 +145,26 @@ fi
 
 # Backup to repository
 echo_info "Backup Firebase remote-config to repository"
+echo
+
+echo_info "Create \"firebase_remote_config_backup\" branch"
+
+branch_cmd="git checkout -b firebase_remote_config_backup HEAD"
+
+echo_details "$branch_cmd"
+echo
+
+eval "${branch_cmd}"
+
+if [ $? -ne 0 ] ; then
+    echo_fail "Fail"
+fi
+
+echo_info "Add and commit \"${remote_config_file}\""
 
 commit_cmd="git add \"${remote_config_file}\""
 commit_cmd="$commit_cmd; git diff-index --quiet HEAD || git commit -m \"Firebase remote-config backup\""
-commit_cmd="$commit_cmd; git push -f origin HEAD"
+commit_cmd="$commit_cmd; git push -u origin HEAD"
 
 echo_details "$commit_cmd"
 echo

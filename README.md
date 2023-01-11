@@ -1,6 +1,7 @@
 # Firebase Remote-Config Backup
 
 Export current firebase-config as JSON and add it to the repository.
+A PR is created which as to be merged manually by a dev.
 
 ## How to use this Step
 
