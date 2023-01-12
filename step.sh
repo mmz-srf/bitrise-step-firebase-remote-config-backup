@@ -42,6 +42,7 @@ function echo_details {
 function echo_done {
     msg=$1
     color_echo "${GREEN}" "  ${msg}"
+    exit 0
 }
 
 function validate_required_input {
