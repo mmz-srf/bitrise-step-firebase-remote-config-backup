@@ -219,7 +219,7 @@ execute "$install_gh_cmd" "Cannot install GH."
 #
 create_pr_cmd="echo \"$SRF_APPS_GITHUB_TOKEN\" > .githubtoken"
 create_pr_cmd="$create_pr_cmd; gh auth login --with-token < .githubtoken"
-create_pr_cmd="gh pr create --fill"
+create_pr_cmd="$create_pr_cmd; gh pr create --fill"
 
 execute "$create_pr_cmd" "Cannot create PR."
 
