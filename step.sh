@@ -167,7 +167,7 @@ echo
 
 ### Check for changes
 #
-check_cmd="git diff-index --quiet HEAD"
+check_cmd="git diff --quiet HEAD"
 
 echo_details "$check_cmd"
 echo
