@@ -167,7 +167,8 @@ echo
 
 ### Check for changes
 #
-check_cmd="git diff --quiet HEAD"
+check_cmd="git add \"${remote_config_file}\""
+check_cmd="$check_cmd; git diff --quiet HEAD"
 
 echo_details "$check_cmd"
 echo
